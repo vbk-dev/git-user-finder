@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import UserItem from './UserItem';
 import Spinner from '../layout/Spinner';
+import GithubContext from '../context/github/githubContext';
 
-const Users = ({ users, loading }) => {
+const Users = () => {
+    const { users, isLoading } = useContext(GithubContext);
 
-    if (loading){
+    if (isLoading){
         return <Spinner />
     } else {
         return ( 
@@ -14,8 +16,6 @@ const Users = ({ users, loading }) => {
             </React.Fragment>
         );
     }
-    
-    
 }
 
 export default Users;
